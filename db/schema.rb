@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_09_28_142332) do
+=======
+ActiveRecord::Schema.define(version: 2021_09_16_160709) do
+>>>>>>> 1e326ce2cd9d17b4e23b158fc29347e93ad056a0
 
   create_table "tweets", force: :cascade do |t|
     t.text "content"
