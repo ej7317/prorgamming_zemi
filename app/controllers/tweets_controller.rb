@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
 
     def destroy
         @tweet.destroy
-        flash[:success] = "跡形もなく消え去った..."
+        flash[:success] = "hahaha...あのツイート跡形もなく消え去ったな..."
         redirect_to request.referrer || root_url
     end
 
@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
             render 'edit'
         end
     end
-    
+
     private
 
         def tweet_params
