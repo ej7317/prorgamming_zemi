@@ -1,6 +1,28 @@
-<h1>Editing Tweet</h1>
+<h1>編集</h1>
 
-<%= render 'form', tweet: @tweet %>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@tweet) do |f| %>
+        <% if @tweet.errors.any? %>  
+          <div id="error_explanation">
+              <div class="alert alert-danger">
+                  おい、<%= @tweet.errors.count %>つエラーがあるぞ？
+              </div>
+              <ul>
+                  <% @tweet.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                  <% end %>
+              </ul>
+          </div>
+        <% end %>
 
-<%= link_to 'Show', @tweet %> |
-<%= link_to 'Back', tweets_path %>
+        <%= f.label :content %>
+        <%= f.text_field :content, class: 'form-control' %>
+
+        <%= f.submit "変更を確定", class: "btn btn-primary" %>
+      <% end %>
+    </div>    
+ </div>
+
+             
+        
