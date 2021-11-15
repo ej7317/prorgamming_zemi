@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   delete 'logout' => "sessions#destroy"
   post 'follow/:id' => 'relationships#follow', as: 'follow'
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-  post 'like/:id' => 'likes#create', as: 'create_like'
-  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
+  post 'like/:id' => 'likes#create', as: 'like'
+  delete 'like/:id' => 'likes#destroy', as: 'unlike'
+  get "users/:id/likes" => "users#likes", as: 'likes'
   resources :tweets, only: [:create, :edit, :update, :destroy]
   resources :users do
     member do

@@ -1,0 +1,19 @@
+<% @likes.each do |like|%>
+      <!-- 変数tweetを定義してください -->
+      <%= tweet = tweet.find_by(id: like.tweet_id) %>
+      
+      <% end%>
+      
+      <div class="tweets-index-item">
+        <div class="tweet-left">
+          <img src="<%= "/user_images/#{tweet.user.image_name}" %>">
+        </div>
+        <div class="tweet-right">
+          <div class="tweet-user-name">
+            <%= link_to(tweet.user.name, "/users/#{tweet.user.id}") %>
+          </div>
+          <%= link_to(tweet.content, "/tweets/#{tweet.id}") %>
+        </div>
+      </div>
+    <!-- each文のendを追加してください -->
+    <% end %>

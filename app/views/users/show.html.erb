@@ -28,6 +28,13 @@
                 </strong>
                 フォロワー
             </a>
+            <a href="<%= likes_path %>">
+                 <strong id="likes" class="stat">
+                 <%= @user.likes.count %>
+                 </strong>
+                                 いいね
+            </a>
+
         </div>
         </section>        
     </aside>    

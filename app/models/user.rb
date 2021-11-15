@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-    has_many :tweets, dependent: :destroy
+    has_many :tweets
     has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
     has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     has_many :following_user, through: :follower, source: :followed
     has_many :follower_user, through: :followed, source: :follower
-    has_many :likes
+    has_many :likes, foreign_key: :user_id, dependent: :destroy
+    has_many :liked_tweets, through: :likes, source: :tweet
 
     before_save { email.downcase! }
     validates :name, presence: true, length: { maximum: 50 }
@@ -30,4 +31,5 @@ class User < ApplicationRecord
     def liked_by?(tweet_id)
         likes.where(tweet_id: tweet_id).exists?
     end
+
 end

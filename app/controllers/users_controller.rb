@@ -44,8 +44,16 @@ class UsersController < ApplicationController
   def followers
     @title = "フォロワー達"
     @user = User.find(params[:id])
-    @users = @user.following_user.paginate(page: params[:page])
-    render 'show_follow'
+    @users = @user.follower_user.paginate(page: params[:page])
+    render 'show_followers'
+  end
+
+  def likes
+    @title = "いいね欄"
+    @user = User.find(params[:id])
+    @likes = Like.where(user_id: @user.id)
+    @users = @user.liked_tweets.order(created_at: "DESC").paginate(page: params[:page])
+    render 'liked_tweets'
   end
 
   private
