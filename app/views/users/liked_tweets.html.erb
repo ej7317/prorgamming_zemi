@@ -57,6 +57,12 @@
               </li>
             <% end %>
            </ol>
+        <% else %>
+            <% if current_user?(@user) %>
+               <ul>いいねしてから来ようね。</ul> 
+            <% else %>
+               <ul>いいね無しだってさ、よっぽど世界に興味がない人なんだろうね</ul>  
+            <% end %>      
         <% end %>
     </div>
 </div>

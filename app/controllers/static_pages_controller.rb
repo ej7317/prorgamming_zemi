@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
 
   def contact
   end  
+
+  def users
+    @users = User.all.order(created_at: "DESC").paginate(page: params[:page], per_page: 10) if logged_in?
+  end
 end

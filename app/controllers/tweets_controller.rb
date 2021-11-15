@@ -25,11 +25,19 @@ class TweetsController < ApplicationController
     def update
         @tweet = Tweet.find(params[:id])
         if @tweet.update(tweet_params)
-            flash[:success] = "変更を許可・・・完了"
+            flash[:success] = "変更を許可・・・・・・・完了"
             redirect_to root_url
         else
             render 'edit'
         end
+    end
+
+    def likes
+        @title = "いいねした人達"
+        @tweet = Tweet.find(params[:id])
+        @users = @tweet.liked_users.order(created_at: "DESC").paginate(page: params[:page])
+        @user = current_user
+        render 'likes'
     end
 
     private

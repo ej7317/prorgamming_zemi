@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post 'like/:id' => 'likes#create', as: 'like'
   delete 'like/:id' => 'likes#destroy', as: 'unlike'
   get "users/:id/likes" => "users#likes", as: 'likes'
+  get "tweets/:id/likes" => 'tweets#likes', as: 'likees'
+  get 'users' => "static_pages#users"
   resources :tweets, only: [:create, :edit, :update, :destroy]
   resources :users do
     member do
