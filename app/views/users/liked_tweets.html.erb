@@ -49,9 +49,15 @@
                          <%= link_to "削除", tweet, method: :delete,data: { confirm: "二言はないな？" } %>
                        <% end %>
                        <% if current_user.liked_by?(tweet.id) %>
-                        <td><%= link_to '❤', unlike_path(tweet), method: :DELETE, remote: true %> <%= tweet.likes.count %></td>
+                        <td>
+                          <%= link_to '❤', unlike_path(tweet), method: :DELETE, remote: true %> 
+                          <%= link_to tweet.likes.count, likees_path(tweet) %>
+                        </td>
                        <% else %>
-                        <td><%= link_to '♡', like_path(tweet), method: :POST, remote: true %> <%= tweet.likes.count %></td>
+                        <td>
+                          <%= link_to '♡', like_path(tweet), method: :POST, remote: true %>
+                          <%= link_to tweet.likes.count, likees_path(tweet) %>
+                        </td>
                        <% end %>  
                   </span>
               </li>
