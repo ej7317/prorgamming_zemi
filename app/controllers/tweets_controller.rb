@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-    before_action :logged_in_user, only: [:edit, :destroy, :edit, :update]
+    before_action :logged_in_user, only: [:destroy, :edit, :update]
     before_action :correct_user,   only: [:destroy, :edit, :update]
 
     def create

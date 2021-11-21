@@ -47,7 +47,22 @@
                     <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
                     <span class="content"><%= tweet.content %></span>
                     <span class="timestamp">
-                        投稿日 <%= time_ago_in_words(tweet.created_at) %> 前
+                        投稿日 <%= time_ago_in_words(tweet.created_at) %> 
+                        <% if current_user?(tweet.user) %>
+                         <%= link_to "編集", edit_tweet_path(tweet)%>
+                         <%= link_to "削除", tweet, method: :delete,data: { confirm: "二言はないな？" } %>
+                        <% end %>
+                        <% if current_user.liked_by?(tweet.id) %>
+                         <td>
+                          <%= link_to '❤', unlike_path(tweet), method: :DELETE, remote: true %> 
+                          <%= link_to tweet.likes.count, likees_path(tweet) %>
+                         </td>
+                        <% else %>
+                         <td>
+                          <%= link_to '♡', like_path(tweet), method: :POST, remote: true %>
+                          <%= link_to tweet.likes.count, likees_path(tweet) %>
+                         </td>
+                        <% end %>
                     </span>    
                 </li>
             <% end %>
